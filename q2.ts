@@ -22,10 +22,10 @@ interface TodoResult {
 
 const getTodo = async (todoId: number): Promise<TodoResult | string> => {
     try {
-        const todoResponse = await axios.get<Todo>(https://jsonplaceholder.typicode.com/todos/${todoId});
+        const todoResponse = await axios.get<Todo>('https://jsonplaceholder.typicode.com/todos/${todoId}');
         const todo = todoResponse.data;
 
-        const userResponse = await axios.get<User>(https://jsonplaceholder.typicode.com/users/${todo.userId});
+        const userResponse = await axios.get<User>('https://jsonplaceholder.typicode.com/users/${todo.userId}');
         const user = userResponse.data;
 
         return {
