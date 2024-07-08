@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 interface Todo {
     userId: number;
     id: number;
@@ -19,13 +18,12 @@ interface TodoResult {
     completed: boolean;
 }
 
-
 const getTodo = async (todoId: number): Promise<TodoResult | string> => {
     try {
-        const todoResponse = await axios.get<Todo>('https://jsonplaceholder.typicode.com/todos/${todoId}');
+        const todoResponse = await axios.get<Todo>(`https://jsonplaceholder.typicode.com/todos/${todoId}`);
         const todo = todoResponse.data;
 
-        const userResponse = await axios.get<User>('https://jsonplaceholder.typicode.com/users/${todo.userId}');
+        const userResponse = await axios.get<User>(`https://jsonplaceholder.typicode.com/users/${todo.userId}`);
         const user = userResponse.data;
 
         return {
@@ -38,12 +36,10 @@ const getTodo = async (todoId: number): Promise<TodoResult | string> => {
     }
 };
 
-// Test cases
 const input1 = 15;
 const input2 = 60;
 const input3 = 250;
 
-// Run the test cases
 getTodo(input1).then((result) => console.log(result));
 getTodo(input2).then((result) => console.log(result));
 getTodo(input3).then((result) => console.log(result));
