@@ -1,18 +1,24 @@
-// const axios = require("axios");
-import axios from "axios";
+import axios from 'axios';
 
-/* assign interface/type to the function definition properly */
-const getUser = async (userId: number) => {
-  /* Your code here */
+
+const getUser = async (userId: number): Promise<string> => {
+    const url = `https://jsonplaceholder.typicode.com/users/${userId}`;
+    
+    try {
+        const response = await axios.get(url);
+        return `${response.data.name}`;
+    } catch (error) {
+        return "INVALID USER ID";
+    }
 };
 
-//test case
 const input1 = 1;
 const input2 = 100;
 
-//run
-getUser(input1).then((result) => console.log(result));
-getUser(input2).then((result) => console.log(result));
 
-// module.exports = getUser;
+getUser(input1).then((result) => console.log(result)); 
+getUser(input2).then((result) => console.log(result)); 
+
+
 export default getUser;
+//ณพพงศ์ อนรรฆพฤฒ 660610750
